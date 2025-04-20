@@ -1,7 +1,7 @@
 # April 18 single function algo
 #All comments are notes to myself 
-
-def items(weapons, potions, armor):
+import random
+def items(): #weapons, potions, armor
     player_inventory = {} #add items found as key and quantity of items found as values....??
     
     #(changed to dict) increase/decrease player damage (maybe add a rare set. some chest could have only rare and other a combined chance of both)
@@ -27,14 +27,18 @@ def items(weapons, potions, armor):
                       "Legacy of Lebron": 100}
     
     #Combination, all common items go into common chest. same with rare. potions appear in all chests.
-    common_chest = {weapons_dict|armor_set|potion_dict}
-    rare_chest = {rare_weapon_dict|rare_armor_set|potion_dict} 
+    common_chest = weapons_dict|armor_set|potion_dict
+    rare_chest = rare_weapon_dict|rare_armor_set|potion_dict
     
     # while loop if chest == true select from dictionary and return selected item 
+    #testing before loop
+    selected_loot = random.choice(list(common_chest.items()))
+    print(f"You Found {selected_loot} with damage or health") #Find a way to seperate the dmg value and health value in the response
+    #player_inventory.appe
+    #return player_inventory
     
-    
-    
-    
+if __name__ == "__main__":
+    items()
     
     
     
