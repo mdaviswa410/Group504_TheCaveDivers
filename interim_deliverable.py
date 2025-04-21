@@ -10,5 +10,3 @@ def challenges():
             available.append(task)
         
     return available
-    
-    
