@@ -6,7 +6,7 @@ def create_battle(player_health, player_attack, player_defense,
     round_num = 1
 #Damage taken to enemy by player and to player by enemy in between -5 and 5.
     while player_health > 0 and enemy_health > 0:
-        return f"Round {round_num}"
+        print(f"Round {round_num}")
         damage_enemy = max(0, player_attack - enemy_defense + 
                            random.randint(-5, 5))
         enemy_health -= damage_enemy
@@ -26,6 +26,4 @@ def create_battle(player_health, player_attack, player_defense,
     else:
         battle_result = "DRAW"
     
-    print(f"Battle Result: {battle_result.upper()}")
-    
-    return battle_result
+    return f"Battle Result: {battle_result.upper()}"
