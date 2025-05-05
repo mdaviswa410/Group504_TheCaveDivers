@@ -73,7 +73,8 @@ def main():
             
         #Get Choice
         try: 
-            choice_index = int(input("Choose an option: "))
+            choice_index = int(input("Choose an option (Based on the number "
+                                     "of the option): "))
             if choice_index < 1 or choice_index > len(scene['choices']):
                 print("Invalid choice, please pick again!")
                 continue
@@ -85,7 +86,7 @@ def main():
         previous_choice.append(choice)
         print(f"\nYou have chosen: {choice}\n") 
         
-        
+        #Choices playing out
         if location == "small_village":
             if choice == "Open Door":
                 location = "Open_Door"
@@ -104,9 +105,11 @@ def main():
                 
         elif location == "Forest_entrance" :
             if choice == "Enter Forest":
-                print("You bravely enter the forest...")
+                print("You bravely enter the forest...and you encounter a "
+                      "monster!")
             elif choice == "Go Back":
                 print("You return to the village. The mayor is quite upset.")
                 location == "small_village"
+                
 if __name__ == "__main__":
     main()
