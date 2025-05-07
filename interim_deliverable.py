@@ -24,3 +24,6 @@ def challenges(hero_level):
             available.append(task)
         
     return available
+
+def pass_or_fail(challenge):
+    pass
