@@ -1,24 +1,38 @@
-# April 18 single function algo
-#All comments are notes to myself 
+#How loot is found and the items that can be found 
 import random
-def items(chest_type): #weapons, potions, armor
-    """Chest will be a string that calls rare or common
+def find_chest():
+    """Determines the chances of find common and rare chest
+    
+    Returns:
+        str: common or rare
+    """
+    chest_type = random.choices(["common", "rare"], weights=[60, 40], k=1)[0]
+    print(f"You encountered a {chest_type} chest!")
+    return chest_type
+    
+   
+def items(chest_type): 
+    """Dictionary that hold items for player
+    
+    Args: 
+        chest_type (str): the type of chest found
+    
+    Returns: 
+        tuple: A (str, int) pair from the selected loot. item name and effect
     
     """
-    #player_inventory = {} #add items found as key and quantity of items found 
-    # as values....?? Add later or in a different fucntion
     
     #(changed to dict) increase/decrease player damage.
     weapons_dict = {"Wood Sword": 4, 
                     "Iron Axe": 8,
                     "Spear": 10,
                     "Spiked Flail": 12,
-                    "Nothing": 0} 
+                    "Empty": 0} 
     rare_weapon_dict = {"Great Sword": 15,
                         "Legendary Raider Axe": 17,
                         "Gold spear": 16,
                         "Flail of Gunter": 20,
-                        "Nothing": 0}
+                        "Empty": 0}
     
     #Vlaues here should increase or decrease players health.
     potion_dict = {"Health Potion": 10,
@@ -38,11 +52,6 @@ def items(chest_type): #weapons, potions, armor
     common_chest = (weapons_dict|armor_dict|potion_dict)
     rare_chest = (rare_weapon_dict|rare_armor_dict|potion_dict)
     
-
-    #if common_chest 
-    #selected_loot = random.choice(list(common_chest.items()))
-    
-    #conditional expression in the slot ()
     
     #caller calls either common or rare chest  
     selected_loot = random.choice(list(
@@ -54,8 +63,10 @@ def items(chest_type): #weapons, potions, armor
     print(f"You Found {selected_loot} with damage or health") 
     return selected_loot
     
-#if __name__ == "__main__":
-items("rare")
+if __name__ == "__main__":
+    chest_type = find_chest()
+    items(chest_type)
+
     
     
     
