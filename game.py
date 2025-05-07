@@ -46,6 +46,24 @@ def main():
             "desc": "The forest looks dark and dangerous.",
             "choices": ["Enter Forest", "Go Back"]
             
+        },
+        "Monster_Battle1":{
+            "desc": "Infront of you stands an evil gremlin!",
+            "choices": ["Fight", "Run"]
+        }, 
+        "Monster_Battle2":{
+            "desc": "Oh no you have come across a dragon!" 
+            "He is going to burn you down!", 
+            "choices": ["Fight", "Run"]
+        }, 
+        "Monster_Battle3":{
+            "desc": "The supreme boss awaits you as you approach his lair",
+            "choices": ["Fight", "You must Fight"]
+        }, 
+        "Cave_or_Mountain":{
+            "desc": "You come to a turn pass where on your left is a Mountain"
+            "and a cave on your right, which do you choose?",
+            "choices":["Go through cave", "Climb up the mountain"]
         }
             
     }
@@ -110,6 +128,20 @@ def main():
             elif choice == "Go Back":
                 print("You return to the village. The mayor is quite upset.")
                 location == "small_village"
+        elif location == "Monster_Battle1":
+            if choice == "Fight":
+                result = battlesequence_interim_deliverable(health, 20, 10, 50, 15, 5)
                 
+                if result == "WIN":
+                    print("The gremlin is defeated! Good job!")
+                    location = "Forest_entrance"
+                    
+                elif result == "LOSE":
+                    health -= 30
+                    return health
+            elif choice == "Run":
+                print("You run back to the village")
+                location = "small_village"
+    
 if __name__ == "__main__":
     main()
