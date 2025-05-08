@@ -47,4 +47,4 @@ def create_battle(player_health, player_attack, player_defense,
     else:
         battle_result = "DRAW"
     
-    return f"Battle Result: {battle_result.upper()}"
+    return battle_result.upper()
