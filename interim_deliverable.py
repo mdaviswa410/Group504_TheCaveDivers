@@ -4,7 +4,6 @@ CHALLENGES = {"Chal1" : 1, "Chal2" : 1, "Chal3" : 1, "Chal4" : 2, "Chal5" : 2,
               "Chal6" : 2, "Chal7" : 3, "Chal8" : 3, "Chal9" : 3, "Chal10" : 4, 
               "Chal11" : 4, "Chal12" : 4, "Chal13" : 5, "Chal14" : 5, "Chal15" : 5}
 
-'''
 def challenges(hero_level):
     """This will append challenges the hero can take
     
@@ -25,24 +24,18 @@ def challenges(hero_level):
             available.append(task)
         
     return available
-'''
+
 def get_potion_dict():
-    potion_dict = {}
-    all_potions = potions.items("")
-    print(all_potions)
-    for name, effect in all_potions:
-        if name in {"Health Potion", "Posion Potion", "Nothing"}:
-            potion_dict[name] = effect
-    return potion_dict
+    return {"Health Potion" : 10, "Nothing" : 0}
     
-def heal_health(health, max_health, potion):
+def heal_health(health, max_health, potions):
     if health == max_health:
         print("You have full health.")
         return health
     
     print(f"\nYour health is {health}/{max_health}")
     print("Potions to be used: ")
-    for name, healing in poitions.items():
+    for name, healing in potions.items():
         print(f"{name}: +{healing} HP")
         
     choice = input("Do you want to use a potion?: Enter name or 'no': ").strip()
@@ -60,4 +53,3 @@ if __name__ == "__main__":
     max_health = 50
     potions = get_potion_dict()
     health = heal_health(health, max_health, potions)
-        
