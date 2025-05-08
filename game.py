@@ -1,3 +1,33 @@
+import Loot_deliverable as loot
+import battlesequence_interim_deliverable as battle
+import interim_deliverable as challenge
+
+def villain(name):
+    if name == "gremlin":
+       return{
+           "name": "Gremlin", 
+           "health": 30, 
+           "attack": 10
+           
+        }
+    elif name == "dragon":
+        # Add some random chance to face a mini-boss or dragon
+        return {
+            "name": "Dragon",
+            "health": 50,
+            "attack": 15,
+            
+            }
+    elif name == "boss":
+        return{
+           "name": "The Big Guy", 
+            "health": 150, 
+            "attack": 20,  
+            "reward": loot.items("rare_chest")
+        }
+    else:
+        raise ValueError("Unknown game stage")
+
 """
     
     This is a simple text-based rpg game where the user plays the role of the 
@@ -28,11 +58,12 @@ def main():
     health = 100
     previous_choice = []
     
+    
     scenes = {
         "small_village":{
             "desc": "You wake up in a small village, everything is peaceful."
                     "The birds are chirping and there is a slight breeze." 
-                    "All of a sudden you here a knock at the door."
+                    " All of a sudden you here a knock at the door."
                     "\n Please choose a number:", 
             "choices": ["Open Door", "Stay in bed"]
         },
@@ -111,7 +142,7 @@ def main():
             elif choice == "Stay in bed":
                 print( "You get five more minutes of sleep but the knocking"               
                 "keeps going. You go to the doorway.")
-                location = "Open_door"
+                location = "Open_Door"
     
         elif location == "Open_Door":
             if choice == "Accept":
@@ -125,23 +156,46 @@ def main():
             if choice == "Enter Forest":
                 print("You bravely enter the forest...and you encounter a "
                       "monster!")
+                location = "Monster_Battle1"
             elif choice == "Go Back":
                 print("You return to the village. The mayor is quite upset.")
-                location == "small_village"
+                location = "small_village"
+        
         elif location == "Monster_Battle1":
+            gremlin = villain("gremlin")
             if choice == "Fight":
-                result = battlesequence_interim_deliverable(health, 20, 10, 50, 15, 5)
+                result = battle.create_battle(health, gremlin["health"], 
+                                              gremlin["attack"], 50, 15, 5)
                 
-                if result == "WIN":
+                if result == 'WIN':
+                   
                     print("The gremlin is defeated! Good job!")
-                    location = "Forest_entrance"
-                    
-                elif result == "LOSE":
+                    location = "Cave_or_Mountain"
+                
+                elif result == 'LOSE':
                     health -= 30
-                    return health
+                    print(f"Oh no! Your health is now {health}")
+                    if health <= 0:
+                        print("You died, game over.")
+                        game_over = True
+                    else: 
+                        location = "Forest_entrance"
+                
             elif choice == "Run":
                 print("You run back to the village")
                 location = "small_village"
-    
+                
+            
+        elif location == "Cave_or_Mountain":
+            if choice == "Go through cave":
+                print("You find a treasure chest in the cave!")
+                inventory.append(loot.items("common_chest"))
+                print("Your only choice is to climb up the mountain and find the" 
+                      " evil dragon")
+                location = "Monster_Battle2"
+            elif choice == "Climb up the mountain":
+                print("Uh oh! A dragon is protecting the mountain.")
+                location ="Monster_Battle2"
+
 if __name__ == "__main__":
     main()
