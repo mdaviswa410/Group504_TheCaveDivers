@@ -27,12 +27,12 @@ def items(chest_type):
                     "Iron Axe": 8,
                     "Spear": 10,
                     "Spiked Flail": 12,
-                    "Empty": 0} 
+                    } 
     rare_weapon_dict = {"Great Sword": 15,
                         "Legendary Raider Axe": 17,
                         "Gold spear": 16,
                         "Flail of Gunter": 20,
-                        "Empty": 0}
+                        }
     
     #Vlaues here should increase or decrease players health.
     potion_dict = {"Health Potion": 10,
@@ -41,11 +41,11 @@ def items(chest_type):
 
     #Armor set means one item and should only affect player attributes like health.For now.
     #ie value will add to player over all health (base health + armor health)
-    armor_dict = {"Flith armor": 9,
+    armor_dict = {"Filth armor": 9,
                  "Iron armor": 11} 
-    rare_armor_dict = {"Armor of ": 25,
+    rare_armor_dict = {"Armor of Life": 25,
                       "Legacy of Lebron": 100,
-                      "Nothing": 0}
+                      }
     
     #Combination, all common items go into common chest. same with rare. 
     # potions appear in all chests.
@@ -62,10 +62,15 @@ def items(chest_type):
 
     print(f"You Found {selected_loot} with damage or health") 
     return selected_loot
-    
-if __name__ == "__main__":
+
+def find_loot():
     chest_type = find_chest()
-    items(chest_type)
+    return items(chest_type) 
+
+if __name__ == "__main__":
+    find_loot()
+    #chest_type = find_chest()
+    #items(chest_type)
 
     
     

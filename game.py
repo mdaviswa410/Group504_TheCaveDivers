@@ -23,7 +23,7 @@ def villain(name):
            "name": "The Big Guy", 
             "health": 150, 
             "attack": 20,  
-            "reward": loot.items("rare_chest")
+            "reward": loot.find_loot()
         }
     else:
         raise ValueError("Unknown game stage")
@@ -190,7 +190,7 @@ def main():
         elif location == "Open_Door":
             if choice == "Accept":
                 location = "Forest_entrance"
-                gained_item = loot.items("common_chest")
+                gained_item = loot.find_loot()
                 inventory.append(gained_item)
                 print(f"The item you got is: {gained_item[0]}")
             elif choice == "Decline":
@@ -239,7 +239,7 @@ def main():
         elif location == "Cave_or_Mountain":
             if choice == "Go through cave":
                 print("You find a treasure chest in the cave!")
-                gained = loot.items("commo1n_chest")
+                gained = loot.find_loot()
                 inventory.append(gained)
                 print(f"You got: {gained[0]}")
                 print("Your only choice is to climb up the mountain and find the" 
