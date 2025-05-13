@@ -206,6 +206,9 @@ def main():
             
             if choice == "Fight":
                 weapon = battle.select_weapon(inventory)
+                if weapon:
+                    weapon_name, weapon_value = weapon
+                    attack += weapon_value
                 result, health, _ = battle.create_battle(health, attack, defense,
                                         gremlin["health"], gremlin["attack"], 5)
                 
@@ -251,6 +254,10 @@ def main():
             dragon = villain("dragon")
             
             if choice == "Fight":
+                weapon = battle.select_weapon(inventory)
+                if weapon:
+                    weapon_name, weapon_value = weapon
+                    attack += weapon_value
                 result, health, _ = battle.create_battle(health, attack, defense,
                                         dragon["health"], dragon["attack"], 10)
                  
@@ -288,6 +295,10 @@ def main():
             boss = villain("boss")
             
             if choice == "Fight":
+                weapon = battle.select_weapon(inventory)
+                if weapon:
+                    weapon_name, weapon_value = weapon
+                    attack += weapon_value
                 result, health, _ =  battle.create_battle(health, attack, defense, 
                                     boss["health"], boss["attack"], 15)
                 if result == 'WIN':
