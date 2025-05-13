@@ -1,30 +1,33 @@
 import Loot_deliverable as potions
-# The variable CHALLENGES is a global variable for easy use anywhere.
-CHALLENGES = {"Chal1" : 1, "Chal2" : 1, "Chal3" : 1, "Chal4" : 2, "Chal5" : 2, 
-              "Chal6" : 2, "Chal7" : 3, "Chal8" : 3, "Chal9" : 3, "Chal10" : 4, 
-              "Chal11" : 4, "Chal12" : 4, "Chal13" : 5, "Chal14" : 5, "Chal15" : 5}
+import game
+import random
 
-def challenges(hero_level):
-    """This will append challenges the hero can take
-    
-    Args:
-    hero_level (int): The level of the hero
-    
-    Returns:
-    available: A list of challenges when conditions are met the hero can do.
-    
-    Side effects:
-    The variable available is created as a list that has task appended.
-    
-    """
-    
-    available = []
-    for task, level in CHALLENGES.items():
-        if level == hero_level:
-            available.append(task)
-        
-    return available
+challenges = {"forest_challenge" : False, "cave_challenge" : False
+              ,"dark_path_challenge" : False}
 
+def run_challenge(name_challenge, inventory):
+    if challenges[name_challenge]:
+        return inventory
+    print(f"Challenge: {name_challenge.replace("_", " ").title()}")
+    
+    success = random.choice([True, False])
+    
+    if success:
+        print("You passed the challenge, congrats")
+        reward = loot.find_loot()
+        inventory.append(reward)
+        print(f"You got {reward[0]}")
+        challenges = True
+    else:
+        print("You failed the challenge.")
+        challenges[name_challenge] = True
+    return inventory
+
+def check_challenges(scene_key):
+    return {{"Forest_entrance" : "forest_challenge"
+             , "Cave_or_Mountain" : "cave_or_mountain_challenge"
+             ,"The_Dark_Path" : "dark_path_challenge"}}.get(scene_key, None)
+    
 def get_potion_dict():
     return {"Health Potion" : 10, "Nothing" : 0}
     
