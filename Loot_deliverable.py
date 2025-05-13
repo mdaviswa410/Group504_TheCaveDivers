@@ -1,5 +1,6 @@
 #How loot is found and the items that can be found 
 import random
+import time
 def find_chest():
     """Determines the chances of find common and rare chest
     
@@ -32,7 +33,9 @@ def items(chest_type):
                         "Legendary Raider Axe": 17,
                         "Gold spear": 16,
                         "Flail of Gunter": 20,
-                        }
+                        "Lightning Spear": 24,
+                        "Excessum Fatum": 26,
+                        "Orion's Fire Axe": 30,}
     
     #Vlaues here should increase or decrease players health.
     potion_dict = {"Health Potion": 10,
@@ -41,11 +44,14 @@ def items(chest_type):
 
     #Armor set means one item and should only affect player attributes like health.For now.
     #ie value will add to player over all health (base health + armor health)
-    armor_dict = {"Filth armor": 9,
-                 "Iron armor": 11} 
-    rare_armor_dict = {"Armor of Life": 25,
-                      "Legacy of Lebron": 100,
-                      }
+    armor_dict = {"Filth Armor": 9,
+                  "Broken Armor": 10,
+                 "Iron Armor": 17,
+                 "Poor Armor":14} 
+    rare_armor_dict = {"Life Armor": 20,
+                        "Symphony of the Unheard Armor":24,
+                      "Legacy of Lebron Armor": 100,
+                      "Death of Field Armor": 22}
     
     #Combination, all common items go into common chest. same with rare. 
     # potions appear in all chests.
@@ -67,12 +73,20 @@ def find_loot():
     chest_type = find_chest()
     return items(chest_type) 
 
+def sleep_count():
+    print("........Exploring.......")
+    time.sleep(2)  #sleep for 2 sec and act ass exploring
+    
+
 if __name__ == "__main__":
     find_loot()
+    sleep_count()
     #chest_type = find_chest()
     #items(chest_type)
 
+
     
+       
     
     
     

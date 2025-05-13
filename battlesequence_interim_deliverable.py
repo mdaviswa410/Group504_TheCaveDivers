@@ -24,7 +24,7 @@ def select_weapon(inventory):
                 break
     #If player has no weapons in their inventory
     if not weapons:
-        print("Inventory is empty. Fight with your fist!")
+        print("Inventory is empty, no weapons. Fight with your fist!")
         return None
     #Show inventory
     print("Choose a weapon:")
@@ -70,7 +70,7 @@ def create_battle(player_health, player_attack, player_defense,
     round_num = 1
 #Damage taken to enemy by player and to player by enemy in between -5 and 5.
     while player_health > 0 and enemy_health > 0:
-        print(f"Round {round_num}")
+        print(f"[Round {round_num}]")
         damage_enemy = max(1, player_attack - enemy_defense + 
                            random.randint(1, 11))
         enemy_health -= damage_enemy

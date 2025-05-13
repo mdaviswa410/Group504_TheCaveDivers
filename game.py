@@ -132,7 +132,7 @@ def main():
         "Safe_return":{
             "desc": (f"Good job {name}! You have defeated the dragon and returned"
             " to your village. "), 
-            "choices": ["end game"]
+            "choices": ["End Game"]
             
         }
             
@@ -144,7 +144,7 @@ def main():
     
     while not game_over:
         if health <= 0:
-            print("Game over!")
+            print("Game Over!")
             break
         
         
@@ -155,6 +155,7 @@ def main():
         
         #Users choices
         print("\nWhat would you like to do?")
+        print(f"{name}'s health is: {health}%.")
         for choice in range(len(scene['choices'])):
             print(f"{choice + 1}. {scene['choices'][choice]}")
             
@@ -194,7 +195,13 @@ def main():
                 
         elif location == "Forest_entrance" :
             if choice == "Enter Forest":
-                print("You bravely enter the forest...and you encounter a "
+                loot.sleep_count() #Exploring the new area
+                print("You find a treasure chest in the forest!")
+                gained = loot.find_loot()  #Added to give plyer start item
+                inventory.append(gained)
+                print(f"You got: {gained[0]}")
+                loot.sleep_count()
+                print("You bravely explored the forest...and you encounter a "
                       "monster!")
                 location = "Monster_Battle1"
             elif choice == "Go Back":
@@ -213,7 +220,7 @@ def main():
                                         gremlin["health"], gremlin["attack"], 5)
                 
                 if result == 'WIN':
-                    print("The gremlin is defeated! Good job!")
+                    print("The gremlin is defeated! Good job!\n")
                     location = "Cave_or_Mountain"
                 
                 elif result == 'LOSE':
@@ -226,7 +233,7 @@ def main():
                         location = "Forest_entrance"
                 
             elif choice == "Run":
-                print("You run back to the village")
+                print("You run back to the village...\n")
                 location = "small_village"
                 
             elif choice == "Use Item":
@@ -239,14 +246,18 @@ def main():
             
         elif location == "Cave_or_Mountain":
             if choice == "Go through cave":
+                print(f"You entered the cave")
+                loot.sleep_count()
                 print("You find a treasure chest in the cave!")
                 gained = loot.find_loot()
                 inventory.append(gained)
                 print(f"You got: {gained[0]}")
+                loot.sleep_count()
                 print("Your only choice is to climb up the mountain and find the" 
                       " evil dragon")
                 location = "Monster_Battle2"
             elif choice == "Climb up the mountain":
+                loot.sleep_count()
                 print("Uh oh! A dragon is protecting the mountain.")
                 location ="Monster_Battle2"
                 
@@ -283,9 +294,10 @@ def main():
         elif location == "The_Dark_Path":
             
             if choice == "Go down the path":
+                loot.sleep_count()
                 print("You see a huge golden chest infront of you. "
                           "Not only would you protect the village but also save "
-                          "save the economy!")
+                          "save the economy!\n")
                 location = "Monster_Battle3"
             elif choice == "Leave":
                 location = "small_village"
@@ -311,7 +323,7 @@ def main():
                     health -= 60
                     print(f"Oh no! Your health is now {health}")
                     if health <= 0:
-                        print("You died, game over.")
+                        print("[You died, game over.]")
                         game_over = True
                     else: 
                         location = "Safe_return"
@@ -323,7 +335,7 @@ def main():
             elif choice == "Use Item":
                 health, attack, defense = use_item(health, attack, defense, inventory)            
         elif location == "Safe_return":
-            if choice == "end game":
+            if choice == "End Game":
                 print(scenes["Safe_return"]["desc"])
                 game_over = True
 
