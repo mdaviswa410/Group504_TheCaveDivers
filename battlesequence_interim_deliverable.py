@@ -3,10 +3,11 @@ import random
 
 #Let player select weapon
 def select_weapon(inventory):
-    """_summary_
+    """ Prompt player to select a weapon before a battle.
 
     Args:
-        inventory (_type_): _description_
+        inventory (tuple): tuple of weapons that have been collected by the 
+        player.
 
     Returns:
         _type_: _description_
@@ -20,6 +21,10 @@ def select_weapon(inventory):
             if word in item_label:
                 weapons.append(item)
                 break
+    #If player has no weapons in their inventory
+    if not weapons:
+        print("Inventory is empty.")
+        return None
     #Show inventory
     print("Choose a weapon:")
     for index in range(len(weapons)):
