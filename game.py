@@ -205,6 +205,7 @@ def main():
             gremlin = villain("gremlin")
             
             if choice == "Fight":
+                weapon = battle.select_weapon(inventory)
                 result, health, _ = battle.create_battle(health, attack, defense,
                                         gremlin["health"], gremlin["attack"], 5)
                 
