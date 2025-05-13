@@ -50,6 +50,6 @@ def heal_health(health, max_health, potions):
 
 if __name__ == "__main__":
     health = 30
-    max_health = 50
+    max_health = 100
     potions = get_potion_dict()
     health = heal_health(health, max_health, potions)

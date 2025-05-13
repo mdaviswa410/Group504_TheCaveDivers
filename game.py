@@ -7,7 +7,7 @@ def villain(name):
        return{
            "name": "Gremlin", 
            "health": 30, 
-           "attack": 10
+           "attack": 5
            
         }
     elif name == "dragon":
@@ -28,38 +28,32 @@ def villain(name):
     else:
         raise ValueError("Unknown game stage")
 
-def use_item(inventory, challenge, health):
-    if not inventory:
-        print("You don't have any items to use!")
-        return
-
-    print("Inventory:")
-    for idx, item in enumerate(inventory):
-        print(f"{idx + 1}. {item[0]} (Effect: {item[1]})")
-
-    try:
-        item_index = int(input("Choose item number to use: ")) - 1
-        if item_index < 0 or item_index >= len(inventory):
-            print("Invalid selection.")
-            return
-
-        item_name, item_value = inventory.pop(item_index)
-
-        if "potion" in item_name.lower():
-            if "health" in item_name.lower():
-                health = challenge.heal_health(health, item_name, item_value)
-                print(f"You used {item_name}! Health is now {health}")
-            elif "poison" in item_name.lower():
-                health -= item_value
-                print(f"Oops! It was poison! Health is now {health}")
-        else:
-            print(f"{item_name} can't be used right now.")
-
-    except ValueError:
-        print("Please enter a valid number.")
+def use_item(player_health, player_attack, player_defense, inventory):
+    chest_type = loot.find_chest()
+    item_name, effect_value = loot.items(chest_type)
+    
+    
+    if any(keyword in item_name for keyword in ["Sword", "Axe", "Spear", "Flail"]):
+        player_attack += effect_value
+        print(f"You equipped {item_name}")
         
-    return health
+    elif "Potion" in item_name:
+        if "Poison" in item_name:
+            player_attack -= effect_value
+            print(f"Oh no! {item_name}")
+        else:
+            player_health = challenge.heal_health(player_health, max_health=100, potions=item_name)
+            print(f"You used {item_name}")
+    elif "armor" in item_name or "Armor" in item_name:
+        player_defense += effect_value
+        print(f"You equipped {item_name}!")
+    else:
+        print(f"{item_name} had no effect.")
+        
+    return player_health, player_attack, player_defense
+    
 
+   
 """
     
     This is a simple text-based rpg game where the user plays the role of the 
@@ -88,6 +82,8 @@ def main():
     inventory = []
     location = "small_village"
     health = 100
+    attack = 10
+    defense = 5
     previous_choice = []
     
     
@@ -102,7 +98,7 @@ def main():
         "Open_Door":{
             "desc": "You open the door and the town mayor approaches you. "
                 "He says he needs you help fighting off the monsters in time "
-                "for the village party. And he gives you an item!",
+                "for the village party.",
             "choices": ["Accept", "Decline"]
         },
         "Forest_entrance":{
@@ -136,7 +132,7 @@ def main():
         "Safe_return":{
             "desc": (f"Good job {name}! You have defeated the dragon and returned"
             " to your village. "), 
-            "choices": []
+            "choices": ["end game"]
             
         }
             
@@ -190,9 +186,7 @@ def main():
         elif location == "Open_Door":
             if choice == "Accept":
                 location = "Forest_entrance"
-                gained_item = loot.find_loot()
-                inventory.append(gained_item)
-                print(f"The item you got is: {gained_item[0]}")
+               
             elif choice == "Decline":
                 print("You refused to help. The mosters destroy your village "
                         "Game over!")
@@ -211,11 +205,10 @@ def main():
             gremlin = villain("gremlin")
             
             if choice == "Fight":
-                result = battle.create_battle(health, 10, 10,
-                                              gremlin["health"], gremlin["attack"], 5)
+                result, health, _ = battle.create_battle(health, attack, defense,
+                                        gremlin["health"], gremlin["attack"], 5)
                 
                 if result == 'WIN':
-                   
                     print("The gremlin is defeated! Good job!")
                     location = "Cave_or_Mountain"
                 
@@ -233,7 +226,11 @@ def main():
                 location = "small_village"
                 
             elif choice == "Use Item":
-                health = use_item(inventory, challenge, health)
+                health, attack, defense = use_item(health, attack, defense, inventory)
+                print("You feel stronger, time to face the gremlin!")
+                
+            
+                
                 
             
         elif location == "Cave_or_Mountain":
@@ -251,9 +248,10 @@ def main():
                 
         elif location == "Monster_Battle2":
             dragon = villain("dragon")
+            
             if choice == "Fight":
-                result = battle.create_battle(health, 20, 20,
-                                              dragon["health"], dragon["attack"], 10)
+                result, health, _ = battle.create_battle(health, attack, defense,
+                                        dragon["health"], dragon["attack"], 10)
                  
                 
                 if result == 'WIN':
@@ -261,7 +259,7 @@ def main():
                     location = "The_Dark_Path"
                 
                 else:
-                    health -= 50
+                    health -= 30
                     print(f"Oh no! Your health is now {health}")
                     if health <= 0:
                         print("You died, game over.")
@@ -272,9 +270,10 @@ def main():
                 location = "small_village"
                 
             elif choice == "Use Item":
-                health = use_item(inventory, challenge, health)
+                health, attack, defense = use_item(health, attack, defense, inventory)
             
         elif location == "The_Dark_Path":
+            
             if choice == "Go down the path":
                 print("You see a huge golden chest infront of you. "
                           "Not only would you protect the village but also save "
@@ -284,15 +283,17 @@ def main():
                 location = "small_village"
                     
         elif location == "Monster_Battle3":
-            the_boss = villain("boss")
+            
+            boss = villain("boss")
+            
             if choice == "Fight":
-                result =  battle.create_battle(health, 10, 10, 
-                                            the_boss["health"], the_boss["attack"], 30)
+                result, health, _ =  battle.create_battle(health, attack, defense, 
+                                    boss["health"], boss["attack"], 15)
                 if result == 'WIN':
                    
                     print("The boss is defeated! Good job!")
                     location = "Safe_return"
-                    game_over = True
+                    print(f"You recieved: {boss['reward'][0]}")
                 
                 elif result == 'LOSE':
                     health -= 60
@@ -301,18 +302,19 @@ def main():
                         print("You died, game over.")
                         game_over = True
                     else: 
-                        location = "Forest_entrance"
+                        location = "Safe_return"
                         
             elif choice == "Run":
                 print("You run back to the village")
                 location = "small_village"
                 
             elif choice == "Use Item":
-                health = use_item(inventory, challenge, health)
-            
+                health, attack, defense = use_item(health, attack, defense, inventory)            
         elif location == "Safe_return":
-            print(scenes["Safe_return"]["desc"])
-            game_over = True
+            if choice == "end game":
+                print(scenes["Safe_return"]["desc"])
+                game_over = True
+
 
 
 if __name__ == "__main__":
