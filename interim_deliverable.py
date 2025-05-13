@@ -1,5 +1,4 @@
-import Loot_deliverable as potions
-import game
+from Loot_deliverable import find_loot
 import random
 
 challenges = {"forest_challenge" : False, "cave_challenge" : False
@@ -8,25 +7,26 @@ challenges = {"forest_challenge" : False, "cave_challenge" : False
 def run_challenge(name_challenge, inventory):
     if challenges[name_challenge]:
         return inventory
-    print(f"Challenge: {name_challenge.replace("_", " ").title()}")
     
+    print(f"Challenge: {name_challenge.replace("_", " ").title()}")
     success = random.choice([True, False])
     
     if success:
         print("You passed the challenge, congrats")
-        reward = loot.find_loot()
+        reward = find_loot()
         inventory.append(reward)
-        print(f"You got {reward[0]}")
+        print(f"You got {reward}")
         challenges = True
     else:
         print("You failed the challenge.")
-        challenges[name_challenge] = True
+    
+    challenges[name_challenge] = True
     return inventory
 
 def check_challenges(scene_key):
-    return {{"Forest_entrance" : "forest_challenge"
-             , "Cave_or_Mountain" : "cave_or_mountain_challenge"
-             ,"The_Dark_Path" : "dark_path_challenge"}}.get(scene_key, None)
+    return {"Forest_entrance" : "forest_challenge"
+            , "Cave_or_Mountain" : "cave_challenge"
+             , "The_Dark_Path" : "dark_path_challenge"}.get(scene_key, None)
     
 def get_potion_dict():
     return {"Health Potion" : 10, "Nothing" : 0}
