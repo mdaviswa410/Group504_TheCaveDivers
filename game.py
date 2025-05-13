@@ -323,7 +323,7 @@ def main():
             elif choice == "Use Item":
                 health, attack, defense = use_item(health, attack, defense, inventory)            
         elif location == "Safe_return":
-            if choice == "end game":
+            if choice == "":
                 print(scenes["Safe_return"]["desc"])
                 game_over = True
 
