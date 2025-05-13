@@ -10,7 +10,8 @@ def select_weapon(inventory):
         player.
 
     Returns:
-        _type_: _description_
+        tuple or None: returns tuple of the selected weapon with its name and
+        attack value, or returns None if the inventory is empty.
     """
     #Look in inventory and present weapons
     weapon_keywords = ["Sword", "Axe", "Spear", "Flail"]
@@ -23,7 +24,7 @@ def select_weapon(inventory):
                 break
     #If player has no weapons in their inventory
     if not weapons:
-        print("Inventory is empty.")
+        print("Inventory is empty. Fight with your fist!")
         return None
     #Show inventory
     print("Choose a weapon:")
