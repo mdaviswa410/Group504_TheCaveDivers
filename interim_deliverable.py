@@ -16,7 +16,6 @@ def run_challenge(name_challenge, inventory):
         reward = find_loot()
         inventory.append(reward)
         print(f"You got {reward}")
-        challenges = True
     else:
         print("You failed the challenge.")
     
@@ -27,7 +26,14 @@ def check_challenges(scene_key):
     return {"Forest_entrance" : "forest_challenge"
             , "Cave_or_Mountain" : "cave_challenge"
              , "The_Dark_Path" : "dark_path_challenge"}.get(scene_key, None)
-    
+
+def challenge_status(name_challenge, attempted = None):
+    attempted = attempted or set()
+    allowed_challenges = {"forest_challenge", "cave_challenge"
+              ,"dark_path_challenge"}
+    return (False if (name_challenge in (attempted & allowed_challenges))
+            else True)
+
 def get_potion_dict():
     return {"Health Potion" : 10, "Nothing" : 0}
     

@@ -25,8 +25,8 @@ Full Repo: https://github.com/mdaviswa410/Group504_TheCaveDivers.git
 | ***find_chest*** | ***Andre Wonasue*** | ***Weights and list unpacking*** | Influenced by Path  of Exile 2 patch notes |
 | ***sleep_count*** | ***Andre Wonasue***  | ***Timer***  | geeksforgeeks |
 |||||
-| ***challenge_status*** | ***Dante Angel***| ***(Set operations)*** |  |
-| ***run_challenge*** | ***Dante Angel***|  |  |
+|***challenge_status*** | ***Dante Angel***|***Set Operations, Default Parameters*** |  |
+|  | ***Dante Angel***|  |  |
 |||||
 | ***Select_weapon*** | ***McKenzie Davis Watkins***| ***Iteration*** |  |
 | ***create_battle*** | ***McKenzie Davis Watkins***| ***List functions (max function)*** |  |

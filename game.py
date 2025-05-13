@@ -130,7 +130,7 @@ def main():
         }, 
         
         "Safe_return":{
-            "desc": (f"Good job {name}! You have defeated the dragon and returned"
+            "desc": (f"Good job {name}! You have defeated the boss and returned"
             " to your village. "), 
             "choices": ["End Game"]
             
