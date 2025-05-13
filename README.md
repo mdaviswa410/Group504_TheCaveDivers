@@ -21,7 +21,7 @@ Group 504 project repository
 | ***items*** | ***Andre Wonasue***  | ***Conditional expression***  | Meeting with Aric |
 | ***find_chest*** | ***Andre Wonasue*** | ***Weights and list unpacking*** |  |
 |||||
-|  | ***Dante Angel***|  |  |
+|***challenge_status*** | ***Dante Angel***|***Set Operations, Default Parameters*** |  |
 |  | ***Dante Angel***|  |  |
 |||||
 | ***Select_weapon*** | ***McKenzie Davis Watkins***|  |  |
