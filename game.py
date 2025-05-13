@@ -15,14 +15,14 @@ def villain(name):
         return {
             "name": "Dragon",
             "health": 50,
-            "attack": 15,
+            "attack": 10,
             
             }
     elif name == "boss":
         return{
            "name": "The Big Guy", 
             "health": 150, 
-            "attack": 20,  
+            "attack": 15,  
             "reward": loot.find_loot()
         }
     else:
