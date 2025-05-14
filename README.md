@@ -29,7 +29,7 @@ Full Repo: https://github.com/mdaviswa410/Group504_TheCaveDivers.git
 |***run_challenges*** | ***Dante Angel***|  |  |
 |||||
 | ***Select_weapon*** | ***McKenzie Davis Watkins***| ***Iteration*** |  |
-| ***create_battle*** | ***McKenzie Davis Watkins***| ***List functions (max function)*** |  |
+| ***create_battle*** | ***McKenzie Davis Watkins***| ***F-string →print(f"Enemy hit Player for {damage_player} damage.\Player health: {max(0, player_health)}")*** |  |
 
 
 
