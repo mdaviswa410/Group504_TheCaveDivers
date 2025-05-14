@@ -1,6 +1,13 @@
 import random
 
 def challenge_status(name_challenge, attempted = None):
+    """This checks to make sure no challenge can be taken twice
+    
+    Args:
+        name_challenge (str): The name of challenges
+        attempted (set, optional): A set used to see if an attempt was used, 
+        if None, a new empty set is used
+    """
     attempted = attempted or set()
     allowed_challenges = {"forest_challenge", "cave_challenge"
               ,"dark_path_challenge"}
@@ -8,6 +15,18 @@ def challenge_status(name_challenge, attempted = None):
             else True)
 
 def run_challenges(scene_key, medals, inventory, attempted):
+    """This runs the challenges for the player to do
+    
+    Args:
+        scene_key (str): The key for the scene for these challenges
+        medals (list): The medals that are possible to be earned.
+        inventory (list): The inventory used for medals
+        attempted (set): The challenges the players already tried
+        
+    Returns:
+           list: Updated list of the challenges that are done in the game
+    
+    """
     names = {"Forest_entrance" : "forest_challenge", 
              "Cave_or_Mountain" : "cave_challenge",
              "The_Dark_Path" : "dark_path_challenge"}
@@ -63,13 +82,6 @@ def run_challenges(scene_key, medals, inventory, attempted):
     else:
         print("You lost this challenge")
     return inventory
-
-def challenge_status(name_challenge, attempted = None):
-    attempted = attempted or set()
-    allowed_challenges = {"forest_challenge", "cave_challenge"
-              ,"dark_path_challenge"}
-    return (False if (name_challenge in (attempted & allowed_challenges))
-            else True)
 
 def get_potion_dict():
     return {"Health Potion" : 10, "Nothing" : 0}

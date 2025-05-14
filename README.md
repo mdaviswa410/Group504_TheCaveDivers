@@ -26,7 +26,7 @@ Full Repo: https://github.com/mdaviswa410/Group504_TheCaveDivers.git
 | ***sleep_count*** | ***Andre Wonasue***  | ***Timer***  | geeksforgeeks |
 |||||
 |***challenge_status*** | ***Dante Angel***|***Set Operations, Default Parameters*** |  |
-|  | ***Dante Angel***|  |  |
+|***run_challenges*** | ***Dante Angel***|  |  |
 |||||
 | ***Select_weapon*** | ***McKenzie Davis Watkins***| ***Iteration*** |  |
 | ***create_battle*** | ***McKenzie Davis Watkins***| ***List functions (max function)*** |  |
