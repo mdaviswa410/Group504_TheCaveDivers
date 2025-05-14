@@ -29,6 +29,19 @@ def villain(name):
         raise ValueError("Unknown game stage")
 
 def use_item(player_health, player_attack, player_defense, inventory):
+    """
+    This allows the user to get an item and use it during their battle. It will 
+    add to their health and make them stronger during battle.
+    
+    Attributes:
+        player_health(int): The amount of health the player has left
+        player_attack(int): The amount of damage the player can do
+        player_defense(int): The amount of defense a player has
+        inventory(str): Tells you what is in your inventory
+        
+    Side-effect:
+        Prints items to the console
+    """
     chest_type = loot.find_chest()
     item_name, effect_value = loot.items(chest_type)
     
