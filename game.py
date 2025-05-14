@@ -1,6 +1,7 @@
 import Loot_deliverable as loot
 import battlesequence_interim_deliverable as battle
 from interim_deliverable import run_challenges
+import interim_deliverable as challenge
 
 def villain(name):
     if name == "gremlin":
@@ -55,7 +56,7 @@ def use_item(player_health, player_attack, player_defense, inventory):
             player_attack -= effect_value
             print(f"Oh no! {item_name}")
         else:
-            player_health = run_challenges.heal_health(player_health, max_health=100, potions=item_name)
+            player_health = challenge.heal_health(player_health, max_health=100, potions=item_name)
             print(f"You used {item_name}")
     elif "armor" in item_name or "Armor" in item_name:
         player_defense += effect_value
