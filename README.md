@@ -31,7 +31,8 @@ Full Repo: https://github.com/mdaviswa410/Group504_TheCaveDivers.git
 | ***Select_weapon*** | ***McKenzie Davis Watkins***| ***Iteration*** |  |
 | ***create_battle*** | ***McKenzie Davis Watkins***| ***F-string →print(f"Enemy hit Player for {damage_player} damage.\Player health: {max(0, player_health)}")*** |  |
 
-#Annotated Bibliography
+# Annotated Bibliography
+
 PY4E - Python for Everybody. (n.d.). Retrieved May 13, 2025, from https://www.py4e.com/html3/05-iterations
 Python Time Module | GeeksforGeeks. (n.d.). Retrieved May 13, 2025, from https://www.geeksforgeeks.org/python-time-module/
 
