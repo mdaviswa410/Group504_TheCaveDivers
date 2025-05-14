@@ -19,7 +19,7 @@ Full Repo: https://github.com/mdaviswa410/Group504_TheCaveDivers.git
 | **Methods/Functions** | **Primary Author** | **Technques Demostrated** | Sources |
 |:------------------|:---------------:|:----------------------:|-----------:|
 | ***main*** | ***Maya Konduru*** | ***Sequence Unpacking →Ex:health, attack, defense = use_item(health, attack, defense, inventory)*** |  |
-| ***villain*** | ***Maya Konduru***|  |  
+| ***use_item*** | ***Maya Konduru***| ***Generator Expressions → Ex: if any(keyword in item_name for keyword in ["Sword", "Axe", "Spear", "Flail"]):*** |  
 |||||
 | ***items*** | ***Andre Wonasue***  | ***Conditional expression***  | Meeting with Aric |
 | ***find_chest*** | ***Andre Wonasue*** | ***Weights and list unpacking*** | Influenced by Path  of Exile 2 patch notes |

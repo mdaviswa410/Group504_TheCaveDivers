@@ -1,8 +1,5 @@
 import random
 
-medals = ["First Medal", "Second Medal", "Third Medal"]
-medals_obtained = []
-
 def challenge_status(name_challenge, attempted = None):
     attempted = attempted or set()
     allowed_challenges = {"forest_challenge", "cave_challenge"
