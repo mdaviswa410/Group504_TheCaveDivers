@@ -1,6 +1,6 @@
 import Loot_deliverable as loot
 import battlesequence_interim_deliverable as battle
-import interim_deliverable as challenge
+from interim_deliverable import run_challenges
 
 def villain(name):
     if name == "gremlin":
@@ -80,6 +80,12 @@ def main():
     
     name = input("Enter your name hero: ")
     inventory = []
+    medals = ["First Medal", "Second Medal", "Third Medal"]
+    challenge_names = {"Forest_entrance" : "forest_challenge", 
+             "Cave_or_Mountain" : "cave_challenge",
+             "The_Dark_Path" : "dark_path_challenge"}
+    medals_earned = []
+    attempted_challenges = set()
     location = "small_village"
     health = 100
     attack = 10
@@ -338,6 +344,8 @@ def main():
             if choice == "End Game":
                 print(scenes["Safe_return"]["desc"])
                 game_over = True
+        if location in challenge_names:
+            run_challenges(location, medals, medals_earned, attempted_challenges)
 
 
 
